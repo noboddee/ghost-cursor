@@ -97,7 +97,7 @@ export function path (start: Vector, end: BoundingBox | Vector, spreadOverride?:
   const length = curve.length() * 0.8
   const baseTime = Math.random() * minSteps
   const steps = Math.ceil((Math.log2(fitts(length, width) + 1) + baseTime) * 3)
-  const re = curve.getLUT(steps)
+  const re = curve.getLUT(steps < 100 ? steps : 100)
   return clampPositive(re)
 }
 
